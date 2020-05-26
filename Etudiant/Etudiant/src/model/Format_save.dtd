@@ -1,0 +1,4 @@
+<!ELEMENT texte (section)+>
+<!ELEMENT section (#PCDATA)>
+<!ATTLIST section start CDATA #REQUIRED>
+<!ATTLIST section end CDATA #REQUIRED>
