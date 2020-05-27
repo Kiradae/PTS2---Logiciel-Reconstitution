@@ -38,15 +38,6 @@ public class MainEtuController {
 	@FXML
 	private CheckBox SensiCasse;
 
-	@FXML
-	private Text sec1_consigne;
-
-	@FXML
-	private Text sec2_consigne;
-
-	@FXML
-	private Text sec3_consigne;
-
 	public void openFile() {
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Selection");
@@ -72,9 +63,13 @@ public class MainEtuController {
 		controller.initialisationExo(path);
 
 		Stage primaryStage = (Stage) buttonOuvrir.getScene().getWindow();
-		// primaryStage.getIcons().add(new Image("https://.jpg"));
+
 		primaryStage.setScene(root);
 		primaryStage.show();
+	}
+
+	public void openRecent() throws IOException {
+		openExo("./src/Recent_file.xml");
 	}
 
 	public void openMenu() throws IOException {
@@ -100,14 +95,6 @@ public class MainEtuController {
 		// primaryStage.getIcons().add(new Image("https://.jpg"));
 		primaryStage.setScene(root);
 		primaryStage.show();
-	}
-
-	public void nextTab() {
-		TabPaneEntr.getSelectionModel().clearAndSelect(TabPaneEntr.getSelectionModel().getSelectedIndex() + 1);
-	}
-
-	public void prevTab() {
-		TabPaneEntr.getSelectionModel().clearAndSelect(TabPaneEntr.getSelectionModel().getSelectedIndex() - 1);
 	}
 
 }

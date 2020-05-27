@@ -1,10 +1,7 @@
-package controller;
+
 
 import java.io.IOException;
 
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -19,12 +16,13 @@ import model.ExternalFile;
 import model.Project;
 import model.Section;
 
-public class Controller2 {
-	private Project projet;
-	private Tab currentTab;
+public class Controller2Save {
 
 	@FXML
 	private TabPane tabPane;
+
+	@FXML
+	private Tab section;
 
 	@FXML
 	private TextFlow sectionConsigne;
@@ -51,22 +49,30 @@ public class Controller2 {
 		tabPane.getTabs().clear();
 
 		ExternalFile ext = new ExternalFile();
-		projet = ext.loadTeacherFile(path);
+		Project projet = ext.loadTeacherFile(path);
 		Section[] sections = projet.getSections();
 
 		projectName.setText(projet.getTitre());
-		sectionConsigne.getChildren().add(new Text(projet.getConsigne()));
-
 		for (int i = 0; i < sections.length; i++) {
-			Tab temp = new Tab("Section" + (i + 1));
-			temp.setOnSelectionChanged(new EventHandler<Event>() {
-				public void handle(Event event) {
-					setSectionByTab(temp);
-				}
-			});
-			tabPane.getTabs().add(i, temp);
-		}
+			Tab temp = new Tab();
+			temp.setText("Section" + (i + 1));
+			temp.setContent(section.getContent());
+			temp.setClosable(true);
 
+			// initialisation des informations
+			Text temp_texte = new Text(sections[i].getHelp());
+			sectionConsigne.getChildren().add(temp_texte);
+
+			temp_texte = new Text(sections[i].getContent());
+			sectionTexte.getChildren().add(temp_texte);
+			timeStart.setText(String.valueOf(sections[i].getStart()).replace('.', ':'));
+			timeEnd.setText(String.valueOf(sections[i].getEnd()).replace('.', ':'));
+
+			// ajout du tab dans tabPane
+			tabPane.getTabs().add(i, temp);
+
+			System.out.println(sections[i]);
+		}
 	}
 
 	public void openSave1() throws IOException {
@@ -74,7 +80,7 @@ public class Controller2 {
 		Scene root = loader.load();
 
 		Stage primaryStage = (Stage) buttonToSave1.getScene().getWindow();
-
+		// primaryStage.getIcons().add(new Image("https://.jpg"));
 		primaryStage.setScene(root);
 		primaryStage.show();
 	}
@@ -84,32 +90,19 @@ public class Controller2 {
 		Scene root = loader.load();
 
 		Stage primaryStage = (Stage) buttonToSave2.getScene().getWindow();
-
+		// primaryStage.getIcons().add(new Image("https://.jpg"));
 		primaryStage.setScene(root);
 		primaryStage.show();
 	}
 
-	public void setSectionByTab(Tab current) {
-		if (currentTab == null || !currentTab.getText().equals(current.getText())) {
-			currentTab = current;
-			int index = ((int) current.getText().charAt(current.getText().length() - 1)) - 48;
-			Section currentSection = projet.getSections()[index - 1];
-
-			sectionTexte.getChildren().clear();
-			sectionTexte.getChildren().add(new Text(currentSection.getContent()));
-
-			timeStart.setText(String.valueOf(currentSection.getStart()).replace('.', ':'));
-
-			timeEnd.setText(String.valueOf(currentSection.getEnd()).replace('.', ':'));
-		}
-	}
-
 	public void nextTab() {
-		tabPane.getSelectionModel().clearAndSelect(tabPane.getSelectionModel().getSelectedIndex() + 1);
+		// TabPane.getSelectionModel().clearAndSelect(TabPane.getSelectionModel().getSelectedIndex()
+		// + 1);
 	}
 
 	public void prevTab() {
-		tabPane.getSelectionModel().clearAndSelect(tabPane.getSelectionModel().getSelectedIndex() - 1);
+		// TabPane.getSelectionModel().clearAndSelect(TabPane.getSelectionModel().getSelectedIndex()
+		// - 1);
 	}
 
 }

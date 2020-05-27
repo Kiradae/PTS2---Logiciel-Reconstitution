@@ -32,7 +32,7 @@
                   </image>
                </ImageView>
                <Button fx:id="buttonOuvrir" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#openFile" prefHeight="50.0" prefWidth="100.0" text="Ouvrir" GridPane.rowIndex="2" />
-               <Button fx:id="buttonOuvrirRecent" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#openFile" prefHeight="50.0" prefWidth="100.0" text="Ouvrir récent" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               <Button fx:id="buttonOuvrirRecent" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#openRecent" prefHeight="50.0" prefWidth="100.0" text="Ouvrir récent" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                <Button fx:id="buttonAide" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Aide" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                <Button fx:id="buttonParametres" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="100.0" text="Paramètres" GridPane.columnIndex="2" />
             </children>

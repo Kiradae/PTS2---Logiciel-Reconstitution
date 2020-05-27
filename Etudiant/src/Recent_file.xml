@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sauvegarde>
+	<titre>CestLeTitre</titre>
+	<consigne>Cest les consignes que personne ne lis et dont tout le monde se fout</consigne>
+	<mode></mode>
+	<document></document>
+	<section start="0.0" end="1.0">
+		<help>Cestl'aide</help>
+		<content>Ceci est le texte de section j'écrit un peu n'imp mais c'est pas grav s'est juste un test pour s'assurer que ça fait pas trop dela merde</content>
+	</section>
+	<section start="1.0" end="2.0">
+		<help>autre aide</help>
+		<content>ENcore un test random qui sert à rien</content>
+	</section>
+</sauvegarde>
