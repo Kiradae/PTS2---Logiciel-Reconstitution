@@ -3,28 +3,33 @@ package view;
 import controller.MainEtuController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class MainEtu extends Application {
-	//public static ;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("Version_etudiant_2.fxml"));
-		Parent root = loader.load();
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("Version_etudiant.fxml"));
+		Scene root = loader.load();
+
+		// primaryStage.getIcons().add(new Image(""));
 		primaryStage.setTitle("Reconstitution_etudiant");
-		primaryStage.setScene(new Scene(root));
+		primaryStage.setScene(root);
 		primaryStage.show();
 
-		MainEtuController controller = loader.getController();
-		System.out.println(controller);
-		//controller.initialise();
+		// MainEtuController controller = loader.getController();
+		// controller.initialisation("Texte_save.xml");
+
+		// Controller1 controller = loader.getController();
+		// controller.init();
+
+		// controller.initialise();
 	}
 
 	public static void main(String[] args) {
 		launch(args);
 	}
+
 }
