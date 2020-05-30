@@ -3,6 +3,8 @@ package controller;
 import java.io.File;
 import java.io.IOException;
 
+import org.w3c.dom.Document;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -25,9 +27,6 @@ public class MainEtuController {
 
 	@FXML
 	private Button buttonOuvrir;
-
-	@FXML
-	private Button buttonToMenu;
 
 	@FXML
 	private TabPane TabPaneEva;
@@ -56,6 +55,7 @@ public class MainEtuController {
 	}
 
 	public void openExo(String path) throws IOException {
+
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/Version_etudiant_2.fxml"));
 		Scene root = loader.load();
 
@@ -66,35 +66,11 @@ public class MainEtuController {
 
 		primaryStage.setScene(root);
 		primaryStage.show();
+
 	}
 
 	public void openRecent() throws IOException {
 		openExo("./src/Recent_file.xml");
-	}
-
-	public void openMenu() throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/Version_etudiant.fxml"));
-		Scene root = loader.load();
-
-		Stage primaryStage = (Stage) buttonToMenu.getScene().getWindow();
-		// primaryStage.getIcons().add(new Image("https://.jpg"));
-		primaryStage.setScene(root);
-		primaryStage.show();
-	}
-
-	public void suivantEva() throws IOException {
-		SingleSelectionModel<Tab> selectionModel = TabPaneEva.getSelectionModel();
-		selectionModel.select(1);
-	}
-
-	public void suivantEntr() throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/Version_etudiant.fxml"));
-		Scene root = loader.load();
-
-		Stage primaryStage = (Stage) buttonToMenu.getScene().getWindow();
-		// primaryStage.getIcons().add(new Image("https://.jpg"));
-		primaryStage.setScene(root);
-		primaryStage.show();
 	}
 
 }
