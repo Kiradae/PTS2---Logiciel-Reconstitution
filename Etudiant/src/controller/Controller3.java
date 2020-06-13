@@ -1,6 +1,12 @@
 package controller;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+
+import org.jdom2.output.Format;
+import org.jdom2.output.XMLOutputter;
+import org.w3c.dom.Element;
 
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -14,8 +20,10 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import model.ExternalFile;
+import model.ExternalFileReader;
+import model.ExternalFileWriter;
 import model.Project;
 import model.Section;
 
@@ -36,7 +44,10 @@ public class Controller3 {
 	@FXML
 	private Button buttonToMenu;
 
+	private Project project;
+
 	public void initialisationRecap(Project projet) {
+		this.project = projet;
 		Section[] s = projet.getSections();
 		String temp = "";
 
@@ -54,6 +65,10 @@ public class Controller3 {
 	}
 	
 	public void openMenu() throws IOException {
+		
+		ExternalFileWriter ext = new ExternalFileWriter();
+		ext.saveExo(project);
+		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/Version_etudiant.fxml"));
 		Scene root = loader.load();
 

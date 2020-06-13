@@ -16,7 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
-import model.ExternalFile;
+import model.ExternalFileReader;
 import model.Project;
 import model.Section;
 
@@ -59,7 +59,7 @@ public class Controller2 {
 	public void initialisationExo(String path) {
 		tabPane.getTabs().clear();
 
-		ExternalFile ext = new ExternalFile();
+		ExternalFileReader ext = new ExternalFileReader();
 		projet = ext.loadTeacherFile(path);
 		Section[] sections = projet.getSections();
 

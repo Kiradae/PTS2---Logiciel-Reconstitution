@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sauvegarde>
+  <titre>C'est le titre</titre>
+  <titre>C'est la consigne</titre>
+  <titre>true</titre>
+  <titre />
+  <section start="0.0" end="1.0">
+    <help>C'est l'aide</help>
+    <content>Ceci est le texte de section.</content>
+    <contentHidden>**** *** ** ***** ** *******.</contentHidden>
+  </section>
+  <section start="1.0" end="2.0">
+    <help>Autre aide</help>
+    <content>Encore un test</content>
+    <contentHidden>****** ** ****.</contentHidden>
+  </section>
+  <section start="2.0" end="3.0">
+    <help>Troisieme aide</help>
+    <content>Encore un autre test.</content>
+    <contentHidden>****** ** ***** ****.</contentHidden>
+  </section>
+</sauvegarde>

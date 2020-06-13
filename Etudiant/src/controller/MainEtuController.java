@@ -18,7 +18,7 @@ import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
-import model.ExternalFile;
+import model.ExternalFileReader;
 import model.Project;
 import model.Section;
 import model.Texte;

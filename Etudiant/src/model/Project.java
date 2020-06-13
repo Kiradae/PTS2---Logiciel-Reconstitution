@@ -61,10 +61,10 @@ public class Project {
 	/**
 	 * Constructeur utilisé pour instancier un projet.
 	 * 
-	 * @param Sections présentes dans le fichier chargé
-	 * @param Titre    du projet
-	 * @param Consigne du projet
-	 * @param Mode     du projet (Entrainement/Evaluation)
+	 * @param Sections Sections présentes dans le fichier chargé
+	 * @param Titre    Titre du projet
+	 * @param Consigne Consigne du projet
+	 * @param Mode     Mode du projet (Entrainement/Evaluation)
 	 */
 	public Project(Section[] sections, String titre, String consigne, String mode) {
 		super();
