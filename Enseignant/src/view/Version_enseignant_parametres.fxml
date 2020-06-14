@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+	<children>
+		<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+								<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+									<children>
+										<AnchorPane layoutX="48.0" layoutY="54.0" prefHeight="105.0" prefWidth="223.0" style="-fx-border-color: black; -fx-border-radius: 5;">
+											<children>
+												<Spinner editable="true" layoutX="134.0" layoutY="14.0" prefHeight="26.0" prefWidth="67.0" />
+												<CheckBox layoutX="14.0" layoutY="64.0" mnemonicParsing="false" text="Accessible dislexie" />
+												<Text layoutX="14.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Taille de la police" />
+											</children>
+										</AnchorPane>
+										<Text layoutX="48.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Paramètres de texte" />
+									</children>
+								</AnchorPane>
+         </center>
+		</BorderPane>
+	</children>
+</AnchorPane>
