@@ -10,7 +10,7 @@ package model;
  */
 public class Project {
 	/**
-	 * Variable stockant les sections présentes dans le fichier chargé
+	 * Variable stockant les sections presentes dans le fichier charge
 	 */
 	private Section[] sections;
 	/**
@@ -21,90 +21,42 @@ public class Project {
 	 * Variable stockant la consigne du projet
 	 */
 	private String consigne;
-	/**
-	 * Variable stockant si le projet est évalué ou non
-	 */
-	private String mode;
-	
-	private int fautes;	
-	
-	/**
-	 * Variable stockant le texte à trous
-	 */
-	String hide;
 
 	/**
-	 * Variable stockant le texte original
+	 * Variable stockant le nombre de fautes
 	 */
-	String original;
+	private int fautes;
+
+	/*
+	 * Variable stockant les mots non valide
+	 */
+	private String stockFautes;
 
 	/**
-	 * Variable stockant texte original modifié pour la sensibilite a la casse
+	 * Variable stockant le mode de sensibilite a� la casse (sensible ou non)
 	 */
-	String originalCasse;
+	private boolean sensiCasse;
 
 	/**
-	 * Variable stockant le mode de sensibilite à la casse
+	 * Variable stockant le mode de l'exercice (Entrainement/Evaluation)
 	 */
-	boolean sensiCasse;
+	private boolean modeEval;
 
 	/**
-	 * Variable stockant mode de l'exercice
-	 */
-	boolean evalue;
-
-	/**
-	 * Variable stockant l'index du mot cherche
-	 */
-	int id = 0;
-
-	/**
-	 * Constructeur utilisé pour instancier un projet.
+	 * Constructeur utilise pour instancier un projet.
 	 * 
-	 * @param Sections Sections présentes dans le fichier chargé
-	 * @param Titre    Titre du projet
-	 * @param Consigne Consigne du projet
-	 * @param Mode     Mode du projet (Entrainement/Evaluation)
+	 * @param Sections presentes dans le fichier charge
+	 * @param Titre    du projet
+	 * @param Consigne du projet
+	 * @param Mode     du projet (Entrainement/Evaluation)
 	 */
-	public Project(Section[] sections, String titre, String consigne, String mode) {
-		super();
+	public Project(Section[] sections, String titre, String consigne, boolean modeEval, boolean sensiCasse) {
 		this.sections = sections;
 		this.titre = titre;
 		this.consigne = consigne;
-		this.mode = mode;
-	}
+		this.modeEval = modeEval;
 
-	/**
-	 * Methode permettant de remplacer les caracteres speciaux par le mot trouve
-	 * 
-	 * @param Le mot recherché
-	 * @return Le texte à trou modifié avec le mot trouvé découvert
-	 */
-	public String checkReponse(String word) {
-
-		// Dans le cas ou la sensibilité à la casse est activée
-		if (sensiCasse) {
-			while (id != -1) {
-				id = original.indexOf(word, id);
-				hide = hide.substring(0, id - 1) + word + hide.substring(id + 1);
-			}
-		}
-
-		// Dans le cas ou la sensibilite à la casse n'est pas activée
-		if (!sensiCasse) {
-			originalCasse = original.toLowerCase(); // met le texte original tout en minuscule
-
-			while (id != -1) {
-				id = originalCasse.indexOf(word, id);
-				hide = hide.substring(0, id - 1) + word + hide.substring(id + 1);
-			}
-		}
-
-		return hide;
-	}
-	
-	public String getMode() {
-		return mode;
+		stockFautes = "";
 	}
 
 	public String getConsigne() {
@@ -127,20 +79,20 @@ public class Project {
 		this.fautes = fautes;
 	}
 
+	public String getStockFautes() {
+		return stockFautes;
+	}
+
+	public void setStockFautes(String faute) {
+		this.stockFautes += "	-" + faute + "\n";
+	}
+
 	public boolean isSensiCasse() {
 		return sensiCasse;
 	}
 
-	public void setSensiCasse(boolean sensiCasse) {
-		this.sensiCasse = sensiCasse;
-	}
-
-	public boolean isEvalue() {
-		return evalue;
-	}
-
-	public void setEvalue(boolean evalue) {
-		this.evalue = evalue;
+	public boolean isModeEval() {
+		return modeEval;
 	}
 
 }

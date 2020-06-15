@@ -16,34 +16,34 @@ public class ExternalFileWriter {
 	public ExternalFileWriter() {
 	}
 
-	public void saveExo(Project project) {
-
+	public File chooseWhere() {
 		FileChooser fileChooser = new FileChooser();
 		Stage stage = new Stage();
-		
+
 		fileChooser.setTitle("Choisissez une destination");
 		fileChooser.setSelectedExtensionFilter(null);
 		fileChooser.setInitialFileName("ExoSave.xml");
-		
-		File file = fileChooser.showSaveDialog(stage);
-		
+
+		return fileChooser.showSaveDialog(stage);
+	}
+
+	public void saveExo(File file, Project project) {
 		if (file != null) {
 			try {
 				Element sauvegarde = new Element("sauvegarde");
 				Document doc = new Document(sauvegarde);
-				
+
 				Element titre = new Element("titre").setText(project.getTitre());
 				doc.getRootElement().addContent(titre);
-				
+
 				Element consigne = new Element("consigne").setText(project.getConsigne());
 				doc.getRootElement().addContent(consigne);
-				
-				Element mode = new Element("mode").setText(project.getMode());
-				doc.getRootElement().addContent(mode);
-				
-				Element document = new Element("document").setText(null);
-				doc.getRootElement().addContent(document);
-				
+
+				Element option = new Element("option");
+				option.setAttribute(new Attribute("mode", String.valueOf(project.isModeEval())));
+				option.setAttribute(new Attribute("sensi", String.valueOf(project.isSensiCasse())));
+				doc.getRootElement().addContent(option);
+
 				for (Section Section : project.getSections()) {
 					Element section = new Element("section");
 					section.setAttribute(new Attribute("start", String.valueOf(Section.getStart())));

@@ -1,7 +1,9 @@
 package model;
 
+import java.util.ArrayList;
+
 /**
- * Classe relative au sections, et aux méthodes qui y sont lié.
+ * Classe relative au sections, et aux methodes qui y sont lie.
  * 
  * @author Florian BENMAHDJOUB
  * @author Antoine PAUMIER
@@ -9,47 +11,57 @@ package model;
  * @author Lucie MASSON
  */
 public class Section {
-	
+	private final static String charPossible = " .,;:!?";
+
 	/**
-	 * Variable stockant la valeur du début de la section
+	 * Variable stockant la valeur du debut de la section
 	 */
 	private float start;
-	
+
 	/**
 	 * Variable stockant la valeur de la fin de la section
 	 */
 	private float end;
-	
+
 	/**
 	 * Variable stockant le contenu de la section
 	 */
 	private String content;
-	
+
 	/**
 	 * Variable stockant le contenu de la section
 	 */
 	private String contentHidden;
-	
+
+	private ArrayList<String> listeMot;
+
+	private ArrayList<Integer> positionMot;
+
 	/**
 	 * Variable stockant l'aide disponible dans la section
 	 */
 	private String help;
 
 	/**
-	 * Constructeur permétant de créer une instance d'une section
-	 * @param content Hidden 
+	 * Constructeur permetant de creer une instance d'une section
 	 * 
-	 * @param Valeur  du début de la section
+	 * @param content Hidden
+	 * 
+	 * @param Valeur  du debut de la section
 	 * @param Valeur  de la fin de la section
 	 * @param Contenu de la section
 	 * @param Aide    disponible pour la section
 	 */
-	public Section(float start, float end, String content, String contentHidden, String help) {
+	public Section(float start, float end, String help, String content, String contentHidden) {
 		this.start = start;
 		this.end = end;
-		this.content = content;
-		this.contentHidden = contentHidden;
 		this.help = help;
+		this.setContent(content);
+		this.setContentHidden(contentHidden);
+		this.setListeMot();
+
+		System.out.println(listeMot);
+		System.out.println(content + "\n");
 	}
 
 	@Override
@@ -81,20 +93,53 @@ public class Section {
 		this.end = end;
 	}
 
+	public void setContentHidden(String contentHidden) {
+		this.contentHidden = contentHidden;
+	}
+
 	public String getContentHidden() {
 		return contentHidden;
 	}
 
-	public void setContentHidden(String contentHidden) {
-		this.contentHidden = contentHidden;
+	public ArrayList<String> getListeMot() {
+		return listeMot;
 	}
-	
-	public String getContent() {
-		return content;
+
+	public void setListeMot() {
+		listeMot = new ArrayList<>();
+		positionMot = new ArrayList<>();
+
+		String mot = "";
+		for (int i = 0; i < content.length(); i++) {
+			if (charPossible.contains(String.valueOf(content.charAt(i)))) {
+				if (!(mot.equals("") /* || array.contains(mot) */) || (content.length() - 1) == i) {
+					listeMot.add(mot);
+					positionMot.add(i - mot.length());
+				}
+				mot = "";
+			} else
+				mot += content.charAt(i);
+		}
+	}
+
+	public ArrayList<Integer> getPositionMot() {
+		return positionMot;
 	}
 
 	public void setContent(String content) {
+		boolean verifPresence = false;
+		for (int i = 0; i < charPossible.length(); i++)
+			if (content.trim().endsWith("" + charPossible.charAt(i)))
+				verifPresence = true;
+
+		if (!verifPresence)
+			content = content.trim() + ".";
+
 		this.content = content;
+	}
+
+	public String getContent() {
+		return content;
 	}
 
 }
